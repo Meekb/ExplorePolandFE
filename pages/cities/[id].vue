@@ -36,6 +36,10 @@ try {
             <NuxtLink to="/">Back to Cities</NuxtLink>
         </v-container>
     </main>
-    <p v-else-if="error">{{ error }}</p>
+    <div class="error" v-else-if="error">
+        <error-display>
+            <p>{{ error }}</p>
+        </error-display>
+    </div>
     <p v-else>Loading...</p>
 </template>

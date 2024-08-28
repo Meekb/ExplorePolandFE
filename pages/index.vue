@@ -15,7 +15,7 @@ onMounted(async () => {
 
 <template>
     <div class="index-container">
-        <hero-header />
+        <header-banner />
         <main>
             <v-container fluid>
                 <v-row>
