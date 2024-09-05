@@ -34,32 +34,32 @@ const formatNumber = (population) => {
 }
 
 .card {
-    border: 1.5px solid black; /* Light grey border for a subtle look */
-    border-radius: 10px; /* Slightly rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    border: 1.5px solid oldlace;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 40px;
     min-width: 275px;
     width: 100%;
     height: 100%;
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effects */
-    background-color: #ffffff; /* Clean white background */
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #ECEFF1;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-    font-size: 1.5em; /* Larger, bold title */
+    font-size: 1.5em;
     font-weight: bold;
-    color: #333333; /* Darker color for text */
+    color: #333333;
 }
 
 .card-subtitle {
-    font-size: 1em; /* Regular font size for the subtitle */
-    color: #777777; /* Subtle grey color for the subtitle */
-    margin-top: 10px; /* Add some space between title and subtitle */
+    font-size: 1em;
+    color: #777777;
+    margin-top: 10px;
 }
 </style>

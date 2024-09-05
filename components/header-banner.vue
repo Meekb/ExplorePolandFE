@@ -1,10 +1,27 @@
+<script setup>
+import { useAuthStore } from '/stores/auth.js'
+
+const authStore = useAuthStore()
+
+const logoutUser = () => {
+    authStore.logout()
+}
+</script>
+
 <template>
     <div class="header-container">
         <header>
             <h1>Explore Poland ~ Poznaj Polskę</h1>
         </header>
         <div class="subheader">
-            <h2>Dive into Poland by city</h2>
+            <h2>Select a city to explore</h2>
+            <nav class="logout-nav">
+                <ul>
+                    <li v-if="!authStore.isAuthenticated">
+                        <v-btn color="white" @click="logoutUser">Logout</v-btn>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </template>

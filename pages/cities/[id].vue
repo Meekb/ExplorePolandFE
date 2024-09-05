@@ -22,16 +22,22 @@ try {
 
 <template>
     <main v-if="city">
-        <HeroImage :cityName="city.name" :description="city.description" :title="city.name" />
+        <HeroImage :cityName="city.name" :title="city.name" class="mb-6" />
         <v-container>
-            <h3>Attractions</h3>
-            <v-list>
-                <v-list-item v-for="item in attractions" :key="item.name" :id:="item.name">
-                    <strong>{{ item.name }}</strong>
-                    <br/>
-                    {{ item.description }}
-                </v-list-item>
-            </v-list>
+            <div class="mb-8">
+                <h3>Description:</h3>
+                <p>{{ city.description }}</p>
+            </div>
+            <div class="mb-8">
+                <h3>Attractions:</h3>
+                <v-list>
+                    <v-list-item v-for="item in attractions" :key="item.name" :id:="item.name">
+                        <strong>{{ item.name }}</strong>
+                        <br/>
+                        {{ item.description }}
+                    </v-list-item>
+                </v-list>
+            </div>
 
             <NuxtLink to="/">Back to Cities</NuxtLink>
         </v-container>

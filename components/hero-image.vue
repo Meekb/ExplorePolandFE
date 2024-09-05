@@ -21,7 +21,6 @@ const imageUrl = `/` + props.cityName + `.jpg`;
     <div class="hero-image" :style="{ backgroundImage: `url(${imageUrl})` }">
         <div class="overlay">
             <h1>{{ title }}</h1>
-            <h3>{{ description }}</h3>
         </div>
     </div>
 </template>
