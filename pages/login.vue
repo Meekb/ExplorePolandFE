@@ -4,11 +4,31 @@ import { useAuthStore } from '~/stores/auth'
 
 const email = ref('')
 const password = ref('')
+const error = ref(null) // For displaying the error text
+const alert = ref(false) // For controlling the visibility of the alert
 const { $api } = useNuxtApp()
 const authStore = useAuthStore()
 const router = useRouter()
 
 const login = async () => {
+    // Reset the error and alert at the start
+    error.value = null
+    alert.value = false
+
+    // Check if email and password are empty
+    if (!email.value) {
+        error.value = 'Username cannot be empty.'
+        alert.value = true
+        return
+    }
+
+    if (!password.value) {
+        error.value = 'Password cannot be empty.'
+        alert.value = true
+        return
+    }
+
+    // If both fields are provided, try logging in
     try {
         const response = await $api.post('/users/sign_in', {
             user: {
@@ -17,12 +37,17 @@ const login = async () => {
             }
         })
         const token = response.data.token
+
         authStore.setUser(response.data)
         authStore.setToken(token)
+
         authStore.$subscribe(token, { detached: true })
         await router.push('/')
-    } catch (error) {
-        console.error('Login failed', error)
+    } catch (err) {
+        // Set error for incorrect username/password
+        error.value = 'Incorrect username or password.'
+        alert.value = true
+        console.error('Login failed', err)
     }
 }
 </script>
@@ -35,29 +60,40 @@ const login = async () => {
                     <v-card-title class="text-center">
                         <h2>Login</h2>
                     </v-card-title>
+                    <div class="alert-container flex-row justify-center px-4">
+                        <v-alert
+                            v-model="alert"
+                            close-label="Close Alert"
+                            color="red-accent-4"
+                            title="Error"
+                            closable
+                        >
+                            {{ error }}
+                        </v-alert>
+                    </div>
                     <v-card-text>
                         <v-form @submit.prevent="login">
                             <v-text-field
-                                    v-model="email"
-                                    label="Email"
-                                    type="email"
-                                    required
-                                    outlined
+                                v-model="email"
+                                label="Email"
+                                type="email"
+                                required
+                                outlined
                             ></v-text-field>
 
                             <v-text-field
-                                    v-model="password"
-                                    label="Password"
-                                    type="password"
-                                    required
-                                    outlined
+                                v-model="password"
+                                label="Password"
+                                type="password"
+                                required
+                                outlined
                             ></v-text-field>
 
                             <v-btn
-                                    class="mt-4"
-                                    color="primary"
-                                    type="submit"
-                                    block
+                                class="mt-4"
+                                color="primary"
+                                type="submit"
+                                block
                             >
                                 Login
                             </v-btn>
@@ -93,4 +129,3 @@ const login = async () => {
     width: 100%;
 }
 </style>
-
