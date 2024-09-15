@@ -16,9 +16,11 @@ const login = async () => {
                 password: password.value
             }
         })
+        const token = response.data.token
         authStore.setUser(response.data)
-        authStore.setToken(response.data.token)
-        router.push('/')
+        authStore.setToken(token)
+        authStore.$subscribe(token, { detached: true })
+        await router.push('/')
     } catch (error) {
         console.error('Login failed', error)
     }

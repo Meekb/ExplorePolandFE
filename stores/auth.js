@@ -25,13 +25,13 @@ export const useAuthStore = defineStore('auth', {
             this.clearAuth()
 
             // Optionally, remove the token from localStorage or cookies
-            localStorage.removeItem('authToken')
+            sessionStorage.removeItem('token')
 
             // Redirect the user to the login page or homepage
             useRouter().push('/login')
         }
     },
     getters: {
-        isAuthenticated: (state) => !!state.user
+        isAuthenticated: (state) => !!state.token
     },
 })
