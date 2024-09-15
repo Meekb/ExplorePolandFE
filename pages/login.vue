@@ -11,11 +11,9 @@ const authStore = useAuthStore()
 const router = useRouter()
 
 const login = async () => {
-    // Reset the error and alert at the start
     error.value = null
     alert.value = false
 
-    // Check if email and password are empty
     if (!email.value) {
         error.value = 'Username cannot be empty.'
         alert.value = true
@@ -28,7 +26,6 @@ const login = async () => {
         return
     }
 
-    // If both fields are provided, try logging in
     try {
         const response = await $api.post('/users/sign_in', {
             user: {
@@ -44,7 +41,6 @@ const login = async () => {
         authStore.$subscribe(token, { detached: true })
         await router.push('/')
     } catch (err) {
-        // Set error for incorrect username/password
         error.value = 'Incorrect username or password.'
         alert.value = true
         console.error('Login failed', err)
