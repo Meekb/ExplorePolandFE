@@ -8,10 +8,6 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true,
-    },
 })
 
 const imageUrl = `/` + props.cityName + `.jpg`;

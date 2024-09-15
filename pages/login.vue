@@ -16,9 +16,8 @@ const login = async () => {
                 password: password.value
             }
         })
-        authStore.setUser(response.data.user)
+        authStore.setUser(response.data)
         authStore.setToken(response.data.token)
-        console.log('Login successful', response.data)
         router.push('/')
     } catch (error) {
         console.error('Login failed', error)
@@ -61,6 +60,13 @@ const login = async () => {
                                 Login
                             </v-btn>
                         </v-form>
+                        <v-btn
+                            class="mt-4"
+                            color="primary"
+                            block
+                        >
+                            Register
+                        </v-btn>
                     </v-card-text>
                 </v-card>
             </v-col>

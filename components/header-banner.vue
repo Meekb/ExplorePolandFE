@@ -2,7 +2,7 @@
 import { useAuthStore } from '/stores/auth.js'
 
 const authStore = useAuthStore()
-
+const router = useRouter()
 const logoutUser = () => {
     authStore.logout()
 }
@@ -14,13 +14,17 @@ const logoutUser = () => {
             <h1>Explore Poland ~ Poznaj Polskę</h1>
         </header>
         <div class="subheader">
-            <h2>Select a city to explore</h2>
             <nav class="logout-nav">
-                <ul>
-                    <li v-if="!authStore.isAuthenticated">
-                        <v-btn color="white" @click="logoutUser">Logout</v-btn>
-                    </li>
-                </ul>
+<!--                <v-container>-->
+                    <v-row justify="space-between" align="center" class="button-row">
+                        <v-col cols="auto">
+                            <v-btn color="white" @click="router.push('/bucket-list')">Bucket List</v-btn>
+                        </v-col>
+                            <v-btn v-if="authStore.isAuthenticated" color="white" @click="logoutUser" class="logout-button">Logout</v-btn>
+                        <v-col cols="auto">
+                        </v-col>
+                    </v-row>
+<!--                </v-container>-->
             </nav>
         </div>
     </div>
@@ -34,15 +38,24 @@ const logoutUser = () => {
 }
 
 header {
-    background-color: white; /* or any other color */
-    padding: 20px; /* Optional: Add padding if needed */
+    background-color: white;
+    padding: 20px;
     text-align: center;
 }
 
 .subheader {
     background-color: #B71C1C;
-    padding: 20px; /* Optional: Add padding if needed */
-    margin: 0;
-    text-align: center;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logout-nav {
+    margin-top: 10px;
+}
+
+.button-row {
+    /*padding-left: 20px; !* Align buttons to the left with some padding *!*/
 }
 </style>

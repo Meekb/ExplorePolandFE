@@ -1,7 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
-// Define your props
 const props = defineProps({
     city: {
         type: Object,
@@ -17,9 +14,9 @@ const formatNumber = (population) => {
 <template>
     <div class="city-card">
         <NuxtLink :to="`/cities/${city.id}`" style="text-decoration: none; color: inherit;">
-            <v-card flat class="card">
-                <v-card-title class="card-title">{{ city.name }}</v-card-title>
-                <v-card-subtitle class="card-subtitle">Population: {{ formatNumber(city.population) }}</v-card-subtitle>
+            <v-card flat height="150" color="white" class="card">
+                <v-card-title>{{ city.name }}</v-card-title>
+                <v-card-subtitle>Population: {{ formatNumber(city.population) }}</v-card-subtitle>
             </v-card>
         </NuxtLink>
     </div>
