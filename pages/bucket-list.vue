@@ -12,8 +12,8 @@ const { cities } = storeToRefs(bucketStore)
         <div class="mb-8 w-100 flex justify-space-between" style="display: flex; justify-content: space-between; align-items: center;">
             <NuxtLink to="/" class="back-link">Back to Cities</NuxtLink>
         </div>
-        <h2>My Bucket List (Lista rzeczy, które chcę zobaczyć przed śmiercią)</h2>
-        <draggable-list :cities="cities" />
+        <h2 class="mb-8">My Bucket List (Lista rzeczy, które chcę zobaczyć przed śmiercią)</h2>
+        <DraggableList :cities="cities" />
     </v-container>
 </template>
 
