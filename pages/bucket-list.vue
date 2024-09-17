@@ -1,7 +1,7 @@
 <script setup>
 import { useBucketListStore } from '../stores/bucket-list.js'
-import BucketListItem from '~/components/bucket-list-item.vue'
 import {storeToRefs} from "pinia"
+import DraggableList from "/components/draggable-list.vue"
 
 const bucketStore = useBucketListStore()
 const { cities } = storeToRefs(bucketStore)
@@ -12,17 +12,8 @@ const { cities } = storeToRefs(bucketStore)
         <div class="mb-8 w-100 flex justify-space-between" style="display: flex; justify-content: space-between; align-items: center;">
             <NuxtLink to="/" class="back-link">Back to Cities</NuxtLink>
         </div>
-        <h2>My Bucket List (Lista rzeczy, które chcę zobaczyć przed śmiercią)</h2>
-
-        <v-row>
-            <v-col
-                v-for="(city, index) in cities"
-                :key="'bucket-item-' + index"
-                cols="12" md="6" lg="4"
-            >
-                <bucket-list-item :city="city" class="my-3" />
-            </v-col>
-        </v-row>
+        <h2 class="mb-8">My Bucket List (Lista rzeczy, które chcę zobaczyć przed śmiercią)</h2>
+        <DraggableList :cities="cities" />
     </v-container>
 </template>
 

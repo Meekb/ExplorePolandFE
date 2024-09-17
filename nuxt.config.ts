@@ -14,4 +14,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/axios.js',  // Make sure this line exists
   ],
+  router: {
+    middleware: 'auth-route.global.js',
+  },
 })
