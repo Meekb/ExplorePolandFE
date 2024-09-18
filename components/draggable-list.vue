@@ -15,13 +15,6 @@ export default {
             required: true,
         },
     },
-    data() {
-        return {
-            enabled: true,
-            dragging: false
-        };
-    },
-    computed: {},
     methods: {
         formatNumber(number) {
             return new Intl.NumberFormat().format(number)
@@ -39,11 +32,7 @@ export default {
         <div class="col-6">
             <draggable
                 :list="cities"
-                :disabled="!enabled"
                 item-key="name"
-                :move="checkMove"
-                @start="dragging = true"
-                @end="dragging = false"
             >
                 <template #item="{ element }">
                     <v-card height="150" hover class="mb-8">
