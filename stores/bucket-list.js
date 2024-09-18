@@ -15,9 +15,5 @@ export const useBucketListStore = defineStore('bucketList', {
             console.log('removeCity')
             this.cities = this.cities.filter((city) => city.id !== cityId)
         },
-        // reorderCities(newOrder) {
-        //     console.log('reorderCities')
-        //     this.cities = newOrder
-        // }
     }
 })
